@@ -1,0 +1,31 @@
+<!-- Sample HTML Page -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document Object Model</title>
+  </head>
+  <body>
+    <h1 class="heading">DOM Selectors</h1>
+    <ul>
+      <li id="item">getElementsByTagName</li>
+      <li class="selectors">getElementsByClassName</li>
+      <li class="selectors">getElementById</li>
+      <li id="item">querySelector</li>
+      <li id="item">querySelectorAll</li>
+    </ul>
+  </body>
+  <script>
+    console.log("getElementsByTagName ", document.getElementsByTagName("h1"));
+    console.log("getElementsByTagName ", document.getElementsByTagName("li"));
+    console.log(
+      "getElementsByTagName ",
+      document.getElementsByTagName("li")[0]
+    );
+    console.log("getElementById ", document.getElementById("item"));
+    console.log("querySelector ", document.querySelector("li"));
+    console.log("querySelector", document.querySelector(".heading"));
+    console.log("querySelector", document.querySelector("#item"));
+    console.log("querySelectorAll", document.querySelectorAll(".heading"));
+    console.log("querySelectorAll", document.querySelectorAll("#item"));
+  </script>
+</html>
