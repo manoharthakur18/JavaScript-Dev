@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Button Click Example</title>
+    <!-- Include Bootstrap CSS -->
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h2>Call Web Services on Button Click</h2>
+
+      <button class="btn btn-primary mr-3" onclick="callWebService()">
+        Service 1
+      </button>
+      <button class="btn btn-success" onclick="callData()">Service 2</button>
+
+      <h1 id="hello"></h1>
+
+      <ul class="list-group mt-3" id="dataList"></ul>
+    </div>
+
+    <!-- Include Bootstrap and jQuery JavaScript libraries -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/js/bootstrap.bundle.min.js"></script> -->
+
+    <script>
+      function callWebService() {
+        fetch("https://demo8941838.mockable.io/hello")
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            document.getElementById("hello").innerHTML = data.msg;
+          });
+      }
+      function callData() {
+        fetch("http://demo8941838.mockable.io/data")
+          .then((res) => res.json())
+          .then((data) => {
+            const dataList = document.getElementById("dataList");
+            data.msg.forEach((item) => {
+              const li = document.createElement("li");
+              li.className = "list-group-item";
+              li.textContent = item;
+              dataList.appendChild(li);
+            });
+          });
+      }
+    </script>
+  </body>
+</html>

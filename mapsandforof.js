@@ -38,11 +38,18 @@
 //   console.log(value, key);
 // });
 
-var arrofarr = [
+const arrofarr = [
   ["one", 1],
   ["tow", 2],
   ["three", 3],
 ];
 
-var mapofArr = new Map(arrofarr)
+const arrOfObj = [
+  {"name": "Manohar"},
+  ["tow", 2],
+  ["three", 3],
+];
+
+
+var mapofArr = new Map(arrOfObj)
 console.log(mapofArr)

@@ -46,26 +46,26 @@
 
 // console.log(myVar === myVar2);
 
-const persons = [
-  {
-    firstName: "John",
-    lastName: "Doe",
-    age: 50,
-    eyeColor: "blue",
-  },
-  {
-    firstName: "Raman",
-    lastName: "Doe",
-    age: 50,
-    eyeColor: "blue",
-  },
-  {
-    firstName: "Pavan",
-    lastName: "Doe",
-    age: 50,
-    eyeColor: "blue",
-  },
-];
+// const persons = [
+//   {
+//     firstName: "John",
+//     lastName: "Doe",
+//     age: 50,
+//     eyeColor: "blue",
+//   },
+//   {
+//     firstName: "Raman",
+//     lastName: "Doe",
+//     age: 50,
+//     eyeColor: "blue",
+//   },
+//   {
+//     firstName: "Pavan",
+//     lastName: "Doe",
+//     age: 50,
+//     eyeColor: "blue",
+//   },
+// ];
 
 // const index = persons.findIndex((person, index) => {
 //   console.log(person, index);
@@ -74,14 +74,14 @@ const persons = [
 
 // console.log(index);
 
-const findPerson = (allPersons, firstName) => {
-  const index = allPersons.findIndex((person, index) => {
-    return person.firstName.toLowerCase() === firstName.toLowerCase();
-  });
-  return allPersons[index];
-};
+// const findPerson = (allPersons, firstName) => {
+//   const index = allPersons.findIndex((person, index) => {
+//     return person.firstName.toLowerCase() === firstName.toLowerCase();
+//   });
+//   return allPersons[index];
+// };
 
-console.log(findPerson(persons, "Pavan"));
+// console.log(findPerson(persons, "Pavan"));
 
 //This is for Redux
 // const func = () => ({ key: "value" });
