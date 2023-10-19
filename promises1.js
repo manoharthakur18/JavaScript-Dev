@@ -34,14 +34,31 @@ function task4() {
   });
 }
 
-async function performTasks() {
-  await task1();
-  await task2();
-  await task3();
-  await task4();
-  console.log("All tasks completed in promise");
-}
+// async function performTasks() {
+//   await task1();
+//   await task2();
+//   await task3();
+//   await task4();
+//   console.log("All tasks completed (async await)");
+// }
 
-performTasks().catch((error) => {
-  console.error("An error occurred in promise:", error);
-});
+// performTasks().catch((error) => {
+//   console.error("An error occurred in promise:", error);
+// });
+
+task1()
+  .then(() => {
+    return task2();
+  })
+  .then(() => {
+    return task3();
+  })
+  .then(() => {
+    return task4();
+  })
+  .then(() => {
+    console.log("All tasks completed (.Then)");
+  })
+  .catch((error) => {
+    console.error("An error occurred:", error);
+  });
