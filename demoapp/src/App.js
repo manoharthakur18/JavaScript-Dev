@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import LifecycleExample from "./components/LifecycleExample";
 
 function App() {
   return (
-    <div>Getting started with react js</div>
-  )
+    <>
+      <LifecycleExample />
+    </>
+  );
 }
 
-export default App
+export default App;
