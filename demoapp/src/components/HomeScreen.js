@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import LifecycleExample from "./LifecycleExample";
 import FunctionalLifecycleExample from "./FunctionalLifecycle";
+import { Link } from "react-router-dom";
 
 function HomeScreen() {
   const [classComponent, setClassComponent] = useState(true);
@@ -16,7 +17,7 @@ function HomeScreen() {
     >
       <h1>LifecycleExample</h1>
       <div>
-        <button
+        {/* <button
           style={{ padding: 5, margin: 5 }}
           onClick={() => setClassComponent(true)}
         >
@@ -24,9 +25,12 @@ function HomeScreen() {
         </button>
         <button style={{ padding: 5 }} onClick={() => setClassComponent(false)}>
           Functional
-        </button>
+        </button> */}
+
+        <Link to={'/class'} style={{ marginRight: 15}}>Class Lifecycle</Link>
+        <Link to={'/functional'}>Functional</Link>
       </div>
-      {classComponent ? <LifecycleExample /> : <FunctionalLifecycleExample />}
+      {/* {classComponent ? <LifecycleExample /> : <FunctionalLifecycleExample />} */}
     </div>
   );
 }
