@@ -43,6 +43,7 @@ class LifecycleExample extends Component {
     console.log("render: Rendering the component");
     return (
       <div>
+        <h1>Class based life cycle</h1>
         <p>Count: {this.state.count}</p>
         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
           Increment
