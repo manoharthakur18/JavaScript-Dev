@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomeScreen />} />
         <Route path="/class" element={<LifecycleExample />} />
-        <Route path="/functional" element={<FunctionalLifecycleExample />} />
+        <Route path="/functional/:id" element={<FunctionalLifecycleExample />} />
       </Routes>
     </Router>
   );

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 function HomeScreen() {
   const [classComponent, setClassComponent] = useState(true);
+  const id = 1;
   return (
     <div
       style={{
@@ -28,7 +29,7 @@ function HomeScreen() {
         </button> */}
 
         <Link to={'/class'} style={{ marginRight: 15}}>Class Lifecycle</Link>
-        <Link to={'/functional'}>Functional</Link>
+        <Link to={`/functional/${id}`}>Functional</Link>
       </div>
       {/* {classComponent ? <LifecycleExample /> : <FunctionalLifecycleExample />} */}
     </div>
