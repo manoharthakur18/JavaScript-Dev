@@ -1,9 +1,10 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import '../css/UserDetails.css'
 function UserDetails() {
   const location = useLocation();
   const user = location.state.user;
+  const navigate = useNavigate();
 
   return (
     <div className="user-details">
@@ -17,6 +18,7 @@ function UserDetails() {
       <p>
         <strong>Company:</strong> {user.company}
       </p>
+      <button onClick={() => navigate(-1)}>Go Back</button>
     </div>
   );
 }

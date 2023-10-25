@@ -2,7 +2,7 @@ import React from "react";
 import LifecycleExample from "./components/LifecycleExample";
 import FunctionalLifecycleExample from "./components/FunctionalLifecycle";
 import HomeScreen from "./components/HomeScreen";
-import { BrowserRouter as Router, Routes, Link, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Link, Route, Navigate } from "react-router-dom";
 import MyComponent from "./components/MyComponent";
 import ErrorBoundary from "./components/ErrorBoundary";
 import UserDetails from "./components/UserDetails";
@@ -22,11 +22,12 @@ function App() {
             element={<FunctionalLifecycleExample />}
           />
           <Route path="/user" element={<UserDetails />} />
+          <Route path="*" element={<Navigate to='/'/>}/>
         </Routes>
       </Router>
-      <ErrorBoundary>
+      {/* <ErrorBoundary>
         <MyComponent />
-      </ErrorBoundary>
+      </ErrorBoundary> */}
     </>
   );
 }
