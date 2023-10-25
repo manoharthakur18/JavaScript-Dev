@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function FunctionalLifecycleExample() {
   const [count, setCount] = useState(0);
-  const {id} = useParams();
-  console.log("id",id)
+  const navigate = useNavigate();
+
+  const { id } = useParams();
+  console.log("id", id);
   // componentDidMount
   useEffect(() => {
     console.log("Component is mounted to the DOM");
@@ -34,6 +36,7 @@ function FunctionalLifecycleExample() {
       >
         Increment
       </button>
+      <button onClick={() => navigate(-1)}>Go Back</button>
     </div>
   );
 }

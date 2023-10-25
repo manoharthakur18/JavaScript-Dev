@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import LifecycleExample from "./LifecycleExample";
 import FunctionalLifecycleExample from "./FunctionalLifecycle";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function HomeScreen() {
   const [classComponent, setClassComponent] = useState(true);
   const id = 1;
+  const navigate = useNavigate();
+
+  const user = {
+    id: 999,
+    name: "Manohar",
+    company: "Ksolves",
+  };
+
   return (
     <div
       style={{
@@ -28,8 +36,13 @@ function HomeScreen() {
           Functional
         </button> */}
 
-        <Link to={'/class'} style={{ marginRight: 15}}>Class Lifecycle</Link>
+        <Link to={"/class"} style={{ marginRight: 15 }}>
+          Class Lifecycle
+        </Link>
         <Link to={`/functional/${id}`}>Functional</Link>
+        <button onClick={() => navigate("/user", { state: { user: user } })}>
+          User Details
+        </button>
       </div>
       {/* {classComponent ? <LifecycleExample /> : <FunctionalLifecycleExample />} */}
     </div>
