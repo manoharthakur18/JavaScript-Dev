@@ -1,16 +1,15 @@
-import React from 'react';
+import React from "react";
 
-function TodoList({ todo, onDelete }) {
+function TodoList({ todo, onDelete, onEdit }) {
   return (
     <div className="container mb-3">
       <div className="card-body">
-        <h5 className="card-title">{todo.title}</h5>
-        <p className="card-text">{todo.description}</p>
-        <button
-          className="btn btn-danger"
-          onClick={() => onDelete(todo.id)}
-        >
+        <p className="card-text">{todo.todo}</p>
+        <button className="btn btn-danger" onClick={() => onDelete(todo.id)}>
           Delete
+        </button>
+        <button className="btn btn-primary" onClick={() => onEdit(todo.id)}>
+          Edit
         </button>
       </div>
     </div>

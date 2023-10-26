@@ -2,33 +2,71 @@ import React, { useState } from "react";
 import TodoList from "./TodoList";
 
 function Todo() {
-  const [todos, setTodos] = useState([
-    { id: 1, title: "Task 1", description: "Description of Task 1" },
-    { id: 2, title: "Task 2", description: "Description of Task 2" },
-    { id: 3, title: "Task 3", description: "Description of Task 3" },
-  ]);
+  const [todo, setTodo] = useState("");
+  const [todos, setTodos] = useState([]);
+  const [editedId, setEditedId] = useState(0);
 
   const deleteTodo = (id) => {
+    console.log(id);
     const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
   };
-  
-  const item = { id: 4, title: "Task 4", description: "Description of Task 4" };
 
-  const addTodo = (item) => {
-    setTodos([...todos, item]);
+  const editTodo = (id) => {
+    console.log(id);
+    const editTodo = todos.find((i) => i.id === id);
+    setTodo(editTodo.todo);
+    setEditedId(id);
   };
 
-  const editTodo = (id) => {};
+  const handleChange = (e) => {
+    setTodo(e.target.value);
+  };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (editedId) {
+      const editTodo = todos.find((i) => i.id === editedId);
+      const updatedTodo = todos.map((t) =>
+        t.id === editTodo.id
+          ? (t = { id: t.id, todo })
+          : { i: t.id, todo: t.todo }
+      );
+      setTodos(updatedTodo);
+      setEditedId(0);
+      setTodo("");
+      return;
+    }
+
+    if (todo !== "") {
+      setTodos([...todos, { id: `${todo}-${Date.now()}`, todo }]);
+      setTodo("");
+    }
+  };
   return (
-    <div className="container">
-      {console.log(todos)}
-      <h1>Todo List</h1>
+    <>
+      <div className="container bg-dark pt-5">
+        <form onSubmit={handleSubmit}>
+          <input
+            className="form-control mg-3"
+            type="text"
+            placeholder="Add Todo..."
+            onChange={handleChange}
+            value={todo}
+          />
+          <button className="btn btn-primary mt-2">Add Todo</button>
+        </form>
+      </div>
       {todos.map((todo) => (
-        <TodoList key={todo.id} todo={todo} onDelete={() => addTodo(item)} />
+        <TodoList
+          key={todo.id}
+          todo={todo}
+          onDelete={deleteTodo}
+          onEdit={editTodo}
+        />
       ))}
-    </div>
+    </>
   );
 }
 
