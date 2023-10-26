@@ -31,7 +31,7 @@ function Todo() {
       const updatedTodo = todos.map((t) =>
         t.id === editTodo.id
           ? (t = { id: t.id, todo })
-          : { i: t.id, todo: t.todo }
+          : { id: t.id, todo: t.todo }
       );
       setTodos(updatedTodo);
       setEditedId(0);
@@ -45,28 +45,48 @@ function Todo() {
     }
   };
   return (
-    <>
-      <div className="container bg-dark pt-5">
-        <form onSubmit={handleSubmit}>
-          <input
-            className="form-control mg-3"
-            type="text"
-            placeholder="Add Todo..."
-            onChange={handleChange}
-            value={todo}
-          />
-          <button className="btn btn-primary mt-2">Add Todo</button>
-        </form>
+    <section class="vh-100" style={{ background: "#eee" }}>
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col col-lg-9 col-xl-7">
+            <div class="card rounded-3">
+              <div class="card-body p-4">
+                <h4 class="text-center my-2 pb-3">To Do App</h4>
+                <form onSubmit={handleSubmit}>
+                  <input
+                    className="form-control"
+                    type="text"
+                    placeholder="Add Todo..."
+                    onChange={handleChange}
+                    value={todo}
+                  />
+                  <button className="btn btn-primary my-3">Add Todo</button>
+                </form>
+                <table className="table mb-4">
+                  <thead>
+                    <tr>
+                      <th scope="col">No.</th>
+                      <th scope="col">Todo item</th>
+                      <th scope="col">Edit</th>
+                      <th scope="col">Delete</th>
+                    </tr>
+                  </thead>
+                  {todos.map((todo, index) => (
+                    <TodoList
+                      serialNo={index + 1}
+                      key={todo.id}
+                      todo={todo}
+                      onDelete={deleteTodo}
+                      onEdit={editTodo}
+                    />
+                  ))}
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      {todos.map((todo) => (
-        <TodoList
-          key={todo.id}
-          todo={todo}
-          onDelete={deleteTodo}
-          onEdit={editTodo}
-        />
-      ))}
-    </>
+    </section>
   );
 }
 
