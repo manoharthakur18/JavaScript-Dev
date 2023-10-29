@@ -8,7 +8,7 @@ const LoginSignup = () => {
   const [action, setAction] = useState("Sign Up");
 
   return (
-    <div className="container">
+    <div className="container" style={{width: 600}}>
       <div className="header">
         <div className="text">{action}</div>
         <div className="underline"></div>
