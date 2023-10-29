@@ -6,17 +6,21 @@ import {
 } from "react-router-dom";
 import Auth from "./screens/Auth";
 import HomeScreen from "./screens/HomeScreen";
+import TopBar from "./components/TopBar";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/auth" element={<Auth />} />
-        <Route path="/" element={<HomeScreen />} />
+    <>
+      <TopBar />
+      <Router>
+        <Routes>
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/" element={<HomeScreen />} />
 
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-    </Router>
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 

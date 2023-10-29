@@ -1,10 +1,17 @@
 import React from "react";
-import TopBar from "../components/TopBar";
+import Header from "../components/Header";
+import "./home.css";
+import Posts from "../components/Posts";
+import SideBar from "../components/SideBar";
 
 function HomeScreen() {
   return (
     <>
-      <TopBar />
+      <Header />
+      <div className="home">
+        <Posts />
+        <SideBar />
+      </div>
     </>
   );
 }
