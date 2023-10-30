@@ -7,6 +7,7 @@ import {
 import Auth from "./screens/Auth";
 import HomeScreen from "./screens/HomeScreen";
 import TopBar from "./components/TopBar";
+import PostScreen from "./screens/PostScreen";
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
       <TopBar />
       <Router>
         <Routes>
-          <Route path="/auth" element={<Auth />} />
           <Route path="/" element={<HomeScreen />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/post" element={<PostScreen />} />
 
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
