@@ -28,11 +28,14 @@
   color: #444;
   cursor: pointer;
 }
+
 .topImg {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
+  margin-right: 15px;
+  cursor: pointer;
 }
 
 .topList {
@@ -48,9 +51,12 @@
   cursor: pointer;
 }
 
+.topListItem:hover{
+  color: gray;
+}
+
 .searchIcon {
   font-size: 18px;
   color: #666;
   cursor: pointer;
-  margin-left: 15px;
 }

@@ -1,7 +1,9 @@
 import React from "react";
 import "./topbar.css";
+import { Link } from "react-router-dom";
 
 function TopBar() {
+  const user = true;
   return (
     <div className="top">
       <div className="topLeft">
@@ -12,19 +14,48 @@ function TopBar() {
       </div>
       <div className="topCenter">
         <div className="topList">
-          <li className="topListItem">HOME</li>
-          <li className="topListItem">ABOUT</li>
-          <li className="topListItem">CONTACT</li>
-          <li className="topListItem">WRITE</li>
-          <li className="topListItem">LOGOUT</li>
+          <li className="topListItem">
+            <Link className="link" to="/">
+              HOME
+            </Link>
+          </li>
+          <li className="topListItem">
+            <Link className="link" to="/about">
+              ABOUT
+            </Link>
+          </li>
+          <li className="topListItem">
+            <Link className="link" to="/contact">
+              CONTACT
+            </Link>
+          </li>
+          <li className="topListItem">
+            <Link className="link" to="/write">
+              WRITE
+            </Link>
+          </li>
+          <li className="topListItem">{user && "LOGOUT"}</li>
         </div>
       </div>
       <div className="topRight">
-        <img
-          className="topImg"
-          src="https://images.pexels.com/photos/15030874/pexels-photo-15030874/free-photo-of-grayscale-photo-of-a-man-closing-his-eyes.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt=""
-        />
+        {user ? (
+          <Link className="link" to="/settings">
+            <img
+              className="topImg"
+              src="https://images.pexels.com/photos/15030874/pexels-photo-15030874/free-photo-of-grayscale-photo-of-a-man-closing-his-eyes.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt=""
+            />
+          </Link>
+        ) : (
+          <div className="topList">
+            <li className="topListItem">
+              <Link className="link" to="/auth">
+                LOGIN
+              </Link>
+            </li>
+          </div>
+        )}
+
         <i className="searchIcon fa-solid fa-magnifying-glass"></i>
       </div>
     </div>
