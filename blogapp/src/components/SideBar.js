@@ -9,7 +9,7 @@ function SideBar() {
         <span className="sidebarTitle">ABOUT ME</span>
         <img
           src="https://images.pexels.com/photos/14807470/pexels-photo-14807470.jpeg?auto=compress&cs=tinysrgb&w=1600"
-          alt="Profile Image"
+          alt="Profile"
         />
         <p>
           Laboris sunt aute cupidatat velit magna velit ullamco dolore mollit

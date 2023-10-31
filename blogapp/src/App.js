@@ -9,6 +9,7 @@ import HomeScreen from "./screens/HomeScreen";
 import TopBar from "./components/TopBar";
 import PostScreen from "./screens/PostScreen";
 import WriteBlog from "./screens/WriteBlog";
+import Settings from "./screens/Settings";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/auth" element={<Auth />} />
           <Route path="/post" element={<PostScreen />} />
           <Route path="/write" element={<WriteBlog />} />
+          <Route path="/settings" element={<Settings />} />
 
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
