@@ -56,7 +56,7 @@ function TopBar() {
           </div>
         )}
 
-        <i className="searchIcon fa-solid fa-magnifying-glass"></i>
+        {/* <i className="searchIcon fa-solid fa-magnifying-glass"></i> */}
       </div>
     </div>
   );

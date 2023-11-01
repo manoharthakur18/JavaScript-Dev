@@ -5,6 +5,8 @@ import TopBar from "./components/TopBar";
 import PostScreen from "./screens/PostScreen";
 import WriteBlog from "./screens/WriteBlog";
 import Settings from "./screens/Settings";
+import SideBar from "./components/SideBar";
+import ContactUs from "./screens/ContactUs";
 
 function App() {
   const currentUser = true;
@@ -13,6 +15,8 @@ function App() {
       <TopBar />
       <Routes>
         <Route path="/" element={<HomeScreen />} />
+        <Route path="/about" element={<SideBar />} />
+        <Route path="/contact" element={<ContactUs />} />
         <Route
           path="/auth"
           element={currentUser ? <Navigate to="/" /> : <Auth />}
