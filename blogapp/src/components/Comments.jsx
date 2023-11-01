@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./comments.css";
-import { getComments as getCommentsApi } from "../Assets/CommentsApi";
+import {
+  getComments as getCommentsApi,
+  createComment as createCommentApi,
+} from "../Assets/CommentsApi";
 import Comment from "./Comment";
-
+import CommentForm from "./CommentForm";
 function Comments({ currentUserId }) {
   const [backendComments, setBackendComments] = useState([]);
   const rootComments = backendComments.filter(
@@ -24,15 +27,24 @@ function Comments({ currentUserId }) {
     });
   }, []);
 
+  const addComment = (text, parentId) => {
+    console.log("add comment", text, parentId);
+    createCommentApi(text, parentId).then((comment) => {
+      setBackendComments([comment, ...backendComments]);
+    });
+  };
+
   return (
     <div className="comments">
       <h3 className="comments-title">Comments</h3>
+      <div className="comment-form-title">Write Comment</div>
+      <CommentForm submitLabel="write" handleSubmit={addComment} />
       <div className="comments-container">
-        {rootComments.map((rootcomment) => (
+        {rootComments.map((rootComment) => (
           <Comment
-            key={rootcomment.id}
-            comment={rootcomment}
-            replies={getReplies(rootcomment.userId)}
+            key={rootComment.id}
+            comment={rootComment}
+            replies={getReplies(rootComment.id)}
           />
         ))}
       </div>
