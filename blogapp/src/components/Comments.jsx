@@ -8,7 +8,15 @@ function Comments({ currentUserId }) {
   const rootComments = backendComments.filter(
     (backendComment) => backendComment.parentId === null
   );
-  console.log(backendComments);
+
+  const getReplies = (commentId) => {
+    return backendComments
+      .filter((backendComment) => backendComment.parentId === commentId)
+      .sort(
+        (a, b) =>
+          new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+      );
+  };
 
   useEffect(() => {
     getCommentsApi().then((data) => {
@@ -21,7 +29,11 @@ function Comments({ currentUserId }) {
       <h3 className="comments-title">Comments</h3>
       <div className="comments-container">
         {rootComments.map((rootcomment) => (
-          <Comment key={rootcomment.id} comment={rootcomment} />
+          <Comment
+            key={rootcomment.id}
+            comment={rootcomment}
+            replies={getReplies(rootcomment.userId)}
+          />
         ))}
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import "./comments.css";
 
-function Comment({ comment }) {
+function Comment({ comment, replies }) {
   return (
     <div className="comment">
       <div className="comment-image-container">
@@ -13,6 +13,13 @@ function Comment({ comment }) {
           <div>{comment.createdAt}</div>
         </div>
         <div className="comment-text">{comment.body}</div>
+        {replies.length > 0 && (
+          <div className="replies">
+            {replies.map((reply) => (
+              <Comment comment={reply} key={reply.id} replies={[]} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
