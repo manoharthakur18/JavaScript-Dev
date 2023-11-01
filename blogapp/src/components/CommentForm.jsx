@@ -17,10 +17,6 @@ function CommentForm({ handleSubmit, submitLabel }) {
         className="comment-form-textarea"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        name=""
-        id=""
-        cols="30"
-        rows="10"
       />
       <button className="comment-form-button" disabled={isTextAreaDisabled}>
         {submitLabel}

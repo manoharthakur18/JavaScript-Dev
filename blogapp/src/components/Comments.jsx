@@ -35,6 +35,7 @@ function Comments({ currentUserId }) {
     console.log("add comment", text, parentId);
     createCommentApi(text, parentId).then((comment) => {
       setBackendComments([comment, ...backendComments]);
+      setActiveComment(null);
     });
   };
 
