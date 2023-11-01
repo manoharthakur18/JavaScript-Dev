@@ -3,11 +3,14 @@ import "./comments.css";
 import {
   getComments as getCommentsApi,
   createComment as createCommentApi,
+  deleteComment as deleteCommentApi,
 } from "../Assets/CommentsApi";
 import Comment from "./Comment";
 import CommentForm from "./CommentForm";
+
 function Comments({ currentUserId }) {
   const [backendComments, setBackendComments] = useState([]);
+
   const rootComments = backendComments.filter(
     (backendComment) => backendComment.parentId === null
   );
@@ -34,6 +37,17 @@ function Comments({ currentUserId }) {
     });
   };
 
+  const deleteComment = (commentId) => {
+    if (window.confirm("Are you sure that you want to remove comment?")) {
+      deleteCommentApi(commentId).then(() => {
+        const updatedBackedComments = backendComments.filter(
+          (backendComment) => backendComment.id !== commentId
+        );
+        setBackendComments(updatedBackedComments);
+      });
+    }
+  };
+
   return (
     <div className="comments">
       <h3 className="comments-title">Comments</h3>
@@ -45,6 +59,8 @@ function Comments({ currentUserId }) {
             key={rootComment.id}
             comment={rootComment}
             replies={getReplies(rootComment.id)}
+            currentUserId={currentUserId}
+            onDelete={deleteComment}
           />
         ))}
       </div>

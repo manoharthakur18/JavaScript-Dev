@@ -11,7 +11,7 @@ function PostScreen() {
         <SinglePost />
         <SideBar />
       </div>
-      <Comments currentUserId={1} />
+      <Comments currentUserId="1" />
     </>
   );
 }
