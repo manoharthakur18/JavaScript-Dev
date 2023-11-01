@@ -8,6 +8,7 @@ function Comment({
   currentUserId,
   onDelete,
   addComment,
+  updateComment,
   activeComment,
   setActiveComment,
   parentId = null,
@@ -40,7 +41,16 @@ function Comment({
           <div className="comment-author">{comment.username}</div>
           <div>{createdAt}</div>
         </div>
-        <div className="comment-text">{comment.body}</div>
+        {!isEditing && <div className="comment-text">{comment.body}</div>}
+        {isEditing && (
+          <CommentForm
+            submitLabel="Update"
+            hasCancelButton
+            intialText={comment.body}
+            handleSubmit={(text) => updateComment(text, comment.id)}
+            handleCancel={() => setActiveComment(null)}
+          />
+        )}
         <div className="comment-actions">
           {canReply && (
             <div
@@ -85,6 +95,7 @@ function Comment({
                 key={reply.id}
                 replies={[]}
                 addComment={addComment}
+                updateComment={updateComment}
                 activeComment={activeComment}
                 setActiveComment={setActiveComment}
                 currentUserId={currentUserId}

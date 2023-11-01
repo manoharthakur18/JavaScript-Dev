@@ -4,6 +4,7 @@ import {
   getComments as getCommentsApi,
   createComment as createCommentApi,
   deleteComment as deleteCommentApi,
+  updateComment as updateCommentApi,
 } from "../Assets/CommentsApi";
 import Comment from "./Comment";
 import CommentForm from "./CommentForm";
@@ -50,6 +51,19 @@ function Comments({ currentUserId }) {
     }
   };
 
+  const updateComment = (text, commentId) => {
+    updateCommentApi(text, commentId).then(() => {
+      const updatedBackedComments = backendComments.map((backendComment) => {
+        if (backendComment.id === commentId) {
+          return { ...backendComment, body: text };
+        }
+        return backendComment;
+      });
+      setBackendComments(updatedBackedComments);
+      setActiveComment(null);
+    });
+  };
+
   return (
     <div className="comments">
       <h3 className="comments-title">Comments</h3>
@@ -63,6 +77,7 @@ function Comments({ currentUserId }) {
             replies={getReplies(rootComment.id)}
             currentUserId={currentUserId}
             onDelete={deleteComment}
+            updateComment={updateComment}
             activeComment={activeComment}
             setActiveComment={setActiveComment}
             addComment={addComment}
