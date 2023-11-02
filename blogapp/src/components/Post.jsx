@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./post.css";
 
 function Post({ post }) {
+  const navigate = useNavigate();
   return (
     <div className="post">
       <img className="postImg" src={post.img} alt="" />
@@ -15,9 +16,12 @@ function Post({ post }) {
           </span>
         </div>
         <span className="postTitle">
-          <Link to="/post/abc" className="link">
+          <div
+            onClick={() => navigate(`/post/${post.id}`, { state: post })}
+            className="link"
+          >
             {post.title}
-          </Link>
+          </div>
         </span>
         <hr />
         <span className="postDate">{post.date}</span>

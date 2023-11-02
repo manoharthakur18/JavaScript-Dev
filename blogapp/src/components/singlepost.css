@@ -1,3 +1,9 @@
+html,
+body {
+  scroll-behavior: smooth; /* Optional: Add smooth scrolling animation */
+  scroll-padding-top: 0;
+}
+
 .singlePost {
   flex: 9;
 }
